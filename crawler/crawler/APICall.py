@@ -80,7 +80,7 @@ df = pd.DataFrame()
 for year in range(start_year, min(start_year+10, 2025)):
     for month in range(1, 13):
         deal_ym = f"{year}{month:02}"
-        df = pd.concat([df, get_data(HouseType.Offi, SDMG, deal_ym)])
+        df = pd.concat([df, get_data(house_type, SDMG, deal_ym)])
     print(f"{year}년 데이터 수집 완료")
 df.to_csv(f"Data/raws/{house_type.value}_{start_year}_raw.csv", index=False)
 
