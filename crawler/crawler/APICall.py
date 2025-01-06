@@ -67,8 +67,8 @@ def get_data(
         exit(1)
         return pd.DataFrame()
 
-house_type = HouseType.SH
-start_year = 2020
+house_type = HouseType.Apt
+start_year = 2010
 
 if start_year%10 != 0:
     print("start_year는 10의 배수여야 합니다.")
