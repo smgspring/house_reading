@@ -49,13 +49,12 @@ def get_data(
         "LAWD_CD": region_code,
         "DEAL_YMD": deal_ym,
         # "pageNo": 1, (필수 아님)
-        # "numOfRows": 10, (필수 아님)
+        "numOfRows": 10000, # (필수 아님)
     }
 
     try:
         URL = f"{BASE_URL}/RTMSDataSvc{house_type.value}Rent/getRTMSDataSvc{house_type.value}Rent" # house_type에 따라 URL이 달라짐
         response = requests.get(URL, params=params) # API 호출, params를 쿼리스트링으로 변환
-
         if response.status_code != 200: # 응답이 성공적이지 않으면
             print(response.text)
             raise Exception(f"API request failed with status code {response.status_code}")
@@ -67,8 +66,8 @@ def get_data(
         exit(1)
         return pd.DataFrame()
 
-house_type = HouseType.Apt
-start_year = 2010
+house_type = HouseType.SH
+start_year = 2020
 
 if start_year%10 != 0:
     print("start_year는 10의 배수여야 합니다.")
