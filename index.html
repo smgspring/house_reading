@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>집값리딩</title>
+	<link rel="stylesheet" href="./index.css" />
+</head>
+<body>
+	<!-- 전체 지도 크기-->
+	<div id="map" style="width:100%;height:100vh;"></div>
+	
+	<!--좌측 상단 아이콘 4개개-->
+	<div id="icon-container" style="position: absolute; top: 0px; left: 0px; width: 100px; height: 100px; fill: #fff; z-index: 100">
+		<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+			<rect width="100" height="100" fill="white"/>
+			<path d="M20 20V45.7143H42.5V20H20ZM50 20V28.5714H80V20H50ZM50 37.1429V45.7143H72.5V37.1429H50ZM20 54.2857V80H42.5V54.2857H20ZM50 54.2857V62.8571H80V54.2857H50ZM50 71.4286V80H72.5V71.4286H50Z" fill="black"/>
+			</svg>
+	</div>
+	<div id="icon-container" style="position: absolute; top: 100px; left: 0px; width: 100px; height: 100px; fill: #fff; z-index: 100">
+		<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+			<rect width="100" height="100" fill="white"/>
+			<path d="M38 47.1L47.4615 57L79 24" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			<path d="M76 50.5V73.4444C76 75.1831 75.3444 76.8505 74.1776 78.0799C73.0107 79.3093 71.428 80 69.7778 80H26.2222C24.572 80 22.9893 79.3093 21.8224 78.0799C20.6556 76.8505 20 75.1831 20 73.4444V27.5556C20 25.8169 20.6556 24.1495 21.8224 22.9201C22.9893 21.6907 24.572 21 26.2222 21H60.4444" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+	</div>
+	<div id="icon-container" style="position: absolute; top: 200px; left: 0px; width: 100px; height: 100px; fill: #fff; z-index: 100">
+		<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+			<rect width="100" height="100" fill="white"/>
+			<path d="M16.6667 81.25C16.6667 78.4873 17.7641 75.8378 19.7176 73.8843C21.6711 71.9308 24.3207 70.8333 27.0833 70.8333H83.3333" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			<path d="M27.0833 8.33333H83.3333V91.6667H27.0833C24.3207 91.6667 21.6711 90.5692 19.7176 88.6157C17.7641 86.6622 16.6667 84.0127 16.6667 81.25V18.75C16.6667 15.9873 17.7641 13.3378 19.7176 11.3843C21.6711 9.4308 24.3207 8.33333 27.0833 8.33333Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+	</div>
+	<div id="icon-container" style="position: absolute; top: 300px; left: 0px; width: 100px; height: 100px; fill: #fff; z-index: 100">
+		<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+			<rect width="100" height="100" fill="white"/>
+			<path d="M50 20L59.27 39.7476L80 42.9338L65 58.2965L68.54 80L50 69.7476L31.46 80L35 58.2965L20 42.9338L40.73 39.7476L50 20Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+	</div>
+
+	<!--지도의 좌표를 누르면 나타나는 패널 창창-->
+	<div id="infoPanel" class="panel hidden">
+		<div class="panel-header">
+			<h2>정보 패널</h2>
+			<button id="closePanel">닫기</button>
+		</div>
+		<div class="panel-content">
+			<!-- 여기에 마커 정보 표시 -->
+			<p id="markerInfo">마커 정보를 여기에 표시합니다.</p>
+		</div>
+
+		<!--카카오 맵 api-->
+	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=fee3a64df18fcc551b1e44c1bf398a22"></script>
+	<script src="./index.js"> </script>
+</body>
+</html>
