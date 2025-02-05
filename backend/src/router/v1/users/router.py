@@ -14,4 +14,4 @@ async def get_users():
         User(id=1, name="지호", email="mmm7407@yonsei.ac.kr"),
         User(id=2, name="민겸", email="smg02011224@gmail.com"),
         User(id=3, name="경민", email="mine4624@yonsei.ac.kr"),
-    ]
+    ] 

@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey, DateTime, Text, DECIMAL
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from database import Base
+from src.database import Base
 
 class User(Base):
     __tablename__ = "users"
@@ -23,7 +23,7 @@ class House(Base):
     regist_date = Column(Date, nullable=False)
     deposit = Column(Integer, nullable=False)
     monthly_rent = Column(Integer, nullable=False)
-    calced_rate = Column(Integer, nullable=False)
+    calced_rate = Column(Float, nullable=False)
     build_year = Column(Integer, nullable=False)
     exclu_use_ar = Column(Float, nullable=False)
     floor = Column(Integer, nullable=False)
@@ -33,6 +33,7 @@ class House(Base):
     lon = Column(DECIMAL(9, 6), nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    broker_phone = Column(String, nullable=False)
 
     evaluations = relationship("Evaluation", back_populates="house")
 
