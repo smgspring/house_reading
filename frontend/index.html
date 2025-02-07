@@ -37,19 +37,32 @@
 			</svg>
 	</div>
 
-	<!--지도의 좌표를 누르면 나타나는 패널 창창-->
+	<!--지도의 좌표를 누르면 나타나는 패널 창-->
 	<div id="infoPanel" class="panel hidden">
 		<div class="panel-header">
 			<h2>정보 패널</h2>
-			<button id="closePanel">닫기</button>
+			<!-- 버튼 정렬을 위해 하나의 div로 묶음-->
+			<div class="button-group">
+				<!-- 체크박스 on/off 버튼 -->
+				<button id="openclosecheckbox">체크박스</button>
+				<!-- 패널 버튼 -->
+				<button id="closeButton">닫기</button>
+			</div>
 		</div>
 		<div class="panel-content">
-			<!-- 여기에 마커 정보 표시 -->
-			<p id="markerInfo">마커 정보를 여기에 표시합니다.</p>
-		</div>
+			<!-- 기본 주소 제공 프레임 및 북마크 버튼 -->
+			<div id="detailFrame">
+				<button id="bookmarkBtn"></button>
+			</div>
+			<!-- 체크박스 프레임  -->
+			<div id="checkboxFrame"></div>
+			<!-- 그래프 프레임 -->
+			<div id="graphFrame"></div>
+	</div>
 
 		<!--카카오 맵 api-->
 	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=fee3a64df18fcc551b1e44c1bf398a22"></script>
-	<script src="./index(0202).js"> </script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+	<script src="./index(0206).js"> </script>
 </body>
 </html>
