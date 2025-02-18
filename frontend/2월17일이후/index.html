@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>집값리딩</title>
+	<link rel="stylesheet" href="./index(0217).css" />
+</head>
+<body>
+<div class="map_wrap">
+	<!-- 전체 지도-->
+	<div id="map">
+		<!-- 지도 확대, 축소 컨트롤 div -->
+    	<div class="zoomcontrol" id="zoomcontrol_add"> 
+        <span onclick="zoomIn()"><img src="./add.svg" alt="확대"></span>  
+		</div>
+		<div class="zoomcontrol" id="zoomcontrol_remove">
+		<span onclick="zoomOut()"><img src="./remove.svg" alt="축소"></span>	
+		</div>
+		<!--현재 위치 GPS 표시 div-->
+		<div class="locationButton" id="locationButton" onmouseover="changeImage()" onmouseout="resetImage()">
+		</div>
+
+		<!--로고&아이콘-->
+		<div id="icons">
+			<img id="logo" src="./집값리딩 로고.svg">
+			<img id="checklist_icon" src="./checklist.svg">
+			<img id="news_icon" src="./news.svg">
+			<img id="bookmark_icon" src="./bookmark.svg">
+			<img id="more_icon" src="./더보기.svg">
+		</div>
+
+		<!--좌측 기본 패널-->
+		<div id="mamul_panel">
+			<form id="search-box" action="" method="get">
+				<input id="search-txt" type="text" name="" placeholder="아파트, 지역 또는 지하철 역으로 검색">
+				<button id="search-button" type="submit">
+					<img src="./search.svg"> 
+				</button>
+			</form>
+			<!--매물 패널 중간에 있는 구분선-->
+			<div id="mamul_divider"> </div>
+			<!--기준 아코디언 버튼-->
+			<div id="choose_list">
+				<div id="choose_rent">월세, 전세
+					<img class="choose_arrow" src="./선택 화살표.svg">
+				</div>	
+				<div id="choose_size">방 크기
+					<img class="choose_arrow" src="./선택 화살표.svg">
+				</div>	
+				<div id="choose_year">신축/구축
+					<img class="choose_arrow" src="./선택 화살표.svg">
+				</div>
+				<div id="choose_floor">층수	
+					<img class="choose_arrow" src="./선택 화살표.svg">	
+				</div>
+			</div>
+
+			<!--매물창-->
+			<div class="mamul_container">
+				<!--매물 리스트 안의 정보는 백엔드에서 정보를 받아와 수정 되도록 추후 고쳐야-->
+				<div class="mamul_listing">
+					<img src= "./Rectangle 25.png" alt="매물 사진">
+					<div class="mamul_info">
+						<div class="mamul_price">월세 3000/25</div>
+						<div class="mamul_details">오피스텔 <br>10층 · 22.53m² · 관리비 7.6만<br>깨끗해요, 역세권, 바로입주</div>
+					</div>
+				</div>
+			
+			<div class="mamul_listing">
+				<img src= "./Rectangle 25.png" alt="매물 사진">
+				<div class="mamul_info">
+					<div class="mamul_price">월세 500/39</div>
+					<div class="mamul_details">오피스텔 <br>5층 · 23.64m² · 관리비 7.2만<br>깨끗해요, 햇살굿, 2월 입주</div>
+				</div>
+			</div>
+
+			<div class="mamul_listing">
+				<img src= "./Rectangle 25.png" alt="매물 사진">
+				<div class="mamul_info">
+					<div class="mamul_price">월세 2000/30</div>
+					<div class="mamul_details">다세대 주택 <br>2층 · 10.9m² · 관리비 4.8만<br>21년 완공, 남향, 월세 저렴</div>
+				</div>
+			</div>
+
+			<div class="mamul_listing">
+				<img src= "./Rectangle 25.png" alt="매물 사진">
+				<div class="mamul_info">
+					<div class="mamul_price">전세 1억 4000</div>
+					<div class="mamul_details">투룸 <br>3층 · 50.32m² · 관리비 7.9만<br>깨끗해요, 햇살굿, 방크기 비슷</div>
+				</div>
+			</div>
+
+			<div class="mamul_listing">
+					<img src= "./Rectangle 25.png" alt="매물 사진">
+					<div class="mamul_info">
+						<div class="mamul_price">전세 1억 1000</div>
+						<div class="mamul_details">오피스텔 <br>7층 · 26.01m² · 관리비 8.1만<br>깨끗해요, 햇살굿, 방크기 비슷</div>
+					</div>
+			</div>
+
+			<div class="mamul_listing">
+				<img src= "./Rectangle 25.png" alt="매물 사진">
+				<div class="mamul_info">
+					<div class="mamul_price">전세 1억 1000</div>
+					<div class="mamul_details">오피스텔 <br>7층 · 26.01m² · 관리비 8.1만<br>깨끗해요, 햇살굿, 방크기 비슷</div>
+				</div>
+			</div>
+			</div>
+		</div>
+
+		<!--마커를 눌렀을 때 나오는 디테일 정보 패널-->
+		<div id="detail_panel">
+			<div id="detail_card">
+				<div>
+					<button id="detail_back_btn">
+						<img src="./backarrow.svg">
+					</button>
+					<h2 id="detail_title">서대문구 연희동 파라다이스텔</h2>
+					<button id="detail_close_btn">
+						<img src="./close.svg">
+					</button>
+				</div>
+				<p id="address">서울시 서대문구 연희동 158</p>
+				<div id="detail-info">
+					<div class="text_info" id="jeonse-text">전세
+						<img src="./선택 화살표(흰).svg">
+					</div>
+					<div class="text_info" id="pyeong-text">6.82평
+						<img src="./선택 화살표(흰).svg">
+					</div>
+					<div id="review_text">
+					<img src="./댓글.svg"> 
+						200</div>
+					<div id="message">
+						<img src="./notifications.svg">
+					</div>
+				</div>
+			</div>
+			<img id="home_picture" src="./home_picture.png">
+			<div id="basics_panel">
+				<div id="basics_panel_header">기본정보</div>
+				<img src="./기본 정보 프리뷰.png">	
+				<div id="basic-info-box">
+					<p><span class="label">준공</span> <span>2003.12</span></p>
+					<p><span class="label">규모</span> <span>168세대/총 1개동/총 11층</span></p>
+					<p><span class="label">면적</span> <span>28m² ~ 33.83m²</span></p>
+					<p><span class="label">매물</span> <span>매매&nbsp;</span><span class="color_blue_text">1&nbsp;</span> <span >전세&nbsp;</span><span class="color_blue_text">2&nbsp;</span> <span>월세&nbsp;</span><span class="color_blue_text">3&nbsp;</span></p>
+				</div>		
+			</div>
+
+			<div id="graph-panel">
+				<div id="jeonwalma">
+					<div class="choose_jeonwalma">전세</div>
+					<div class="choose_jeonwalma">월세</div>
+					<div class="choose_jeonwalma">매매</div>
+				</div>
+				<div id="six-gawal">최근 실거래 기준 6개월 평균</div>
+				<img id="info_svg" src="./info.svg">
+				<div id="bozeungwalse">보증금 1,500 월세 40</div>
+				<div id="jipyo">
+					<div class="standard">최근 3년</div>
+					<div class="standard">전체 기간</div>
+					<div class="standard">매매/전세/월세</div>
+					<div class="standard">비교</div>
+				</div>
+				<div id="divider_graph-panel"> </div>
+				<canvas id="pricechart"> </canvas>
+			</div>
+
+			<div id="deunggi-panel">
+				<div id="deunggi-text">등기부등본 분석</div>
+				<div id="deunggi-sky">
+					<img src="./deunggi_alarm.svg">
+					<div id="deunggi-sky-text">등기부등본에서 특이한 점이 발견되었어요!</div>
+				</div>
+				<img id="deunggi-hide" src="./deunggi_hide.png">
+				<div></div>
+				<div id="deunggi-button">
+					등기부등본 분석 파일 신청하기
+				</div>
+			</div>			
+		
+		</div>
+
+		<!--컬러 지표 표시-->
+        <div class="colors">
+                <div class="color" id="lowest"> </div>
+                <p class="color_text" id="lowest_text">최저점</p>
+                <div class="color" id="low"> </div>
+                <p class="color_text" id="low_text">저점</p>
+                <div class="color" id="average"> </div>
+                <p class="color_text" id="average_text">평균</p>
+                <div class="color" id="high"> </div>
+                <p class="color_text" id="high_text">고점</p>
+                <div class="color" id="highest"></div>
+                <p class="color_text" id="highest_text">최고점</p>
+        </div>
+	</div>
+</div>
+	<!--카카오 맵 api-->
+	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=1e375f566d9ad04cebf7bc2736c2ac9c"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+	<script src="./index(0217).js"></script>
+</body>
+</html>
