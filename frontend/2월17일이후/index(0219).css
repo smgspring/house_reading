@@ -1,0 +1,801 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/*지도 영역 설정*/
+#map {
+    width:1920px;
+    height:1080px;
+    position: relative;
+    z-index: 1;
+}
+/*줌컨트롤 영역 설정*/
+.zoomcontrol {
+    position: absolute;
+    width: 60px;
+    height:60px;
+    overflow:hidden;
+    z-index:10;
+    border-radius:10px;
+    border: 1px solid #ffffff; 
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+    background-color:#ffffff;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+/*줌컨트롤 내부 영역*/
+.zoomcontrol span {
+    display:block;
+    width:50px;
+    height:50px;
+    text-align:center;
+    cursor:pointer;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    cursor: pointer;
+}
+/*줌컨트롤 내부 이미지*/
+.zoomcontrol span img {
+    width:50px;
+    height:50px;
+}
+/*줌컨트롤 위치*/   
+#zoomcontrol_add {   
+    top:296px;
+    left:1840px;
+}
+
+#zoomcontrol_remove {   
+    top:367px;
+    left:1840px;
+}
+
+#icons {
+    position: relative;
+    width: 88px;
+    height: 1080px;
+    background-color: #fff;
+    z-index: 1000;
+}
+#logo {
+    position: absolute;
+    left:22px;
+    top:26px;
+    width: 44px;
+    height: 41px;
+    z-index: 1000;
+}
+#checklist_icon {
+    position: absolute;
+    top: 116px;
+    z-index: 1000;
+}
+#news_icon {
+    position: absolute;
+    top: 207px;
+    z-index: 1000;
+}
+#bookmark_icon {
+    position: absolute;
+    top: 298px;
+    z-index: 1000;
+}
+#more_icon {
+    position: absolute;
+    left: 14px;
+    top: 399px;
+    z-index: 1000;
+}
+
+#mamul_panel {
+    position: absolute;
+    left: 88px;
+    top:0px;
+    width: 411px;
+    height: 1080px;
+    background: #FFF;
+    box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.10);
+    z-index: 100;
+}
+
+#search-box {
+    position: absolute;
+    left: 24px;
+    top: 22px;
+    width: 363px;
+    height: 49px;
+    background-color: #fff;
+    border-radius: 20px;
+    border: 1px solid #CCC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-txt {
+    position: absolute;
+    left: 17px;
+    top: 15px;
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0px;
+    color: #B1B1B1;
+    font-size: 16px;
+    width: 2073px;
+}
+
+#search-button {
+    position: absolute;
+    left: 316px;
+    top: 9px;
+    color: #f9deec;
+    float: right;
+    width: 30px;
+    height: 31px;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    cursor: pointer;  
+}
+
+#mamul_divider {
+    position: absolute;
+    top: 92.5px;
+    width: 400.001px;
+    height: 1px;
+    background-color: rgba(217, 217, 217, 0.68);
+}
+
+#choose_list {
+    position: absolute;
+    top: 109px;
+    width: 400px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#choose_list div {
+    border-radius: 10px;
+    border: 0.5px solid #CCC;
+    margin-left: 8px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #464646;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: arial;
+}
+#choose_rent {
+    width: 108px;
+}
+#choose_size {
+    width: 88px;
+}
+#choose_year {
+    width: 102px;
+}
+#choose_floor {
+    width: 73px;
+}
+.choose_arrow {
+    width: 14px;
+    height: 14px;
+}
+
+.mamul_container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0px;
+    top: 168px;
+    width: 411px;
+    height: 902px;
+    overflow-y: auto; /* 스크롤 가능 */
+    background: white;
+}
+
+.mamul_listing {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin-left: 27px;
+}
+
+.mamul_listing img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.mamul_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mamul_price {
+    color: #191919;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.mamul_details {
+    color: #3E3E3E;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#detail_panel {
+    position: absolute;
+    left: 526px;
+    top: 36px;
+    width: 400px;
+    height: 1007px;
+    background-color: #fff;
+    z-index: 100;
+    border-radius: 20px;
+    overflow-y: auto; /*스크롤 가능*/
+}
+
+#detail_panel::-webkit-scrollbar {
+    display: none; /* 스크롤바 숨기기 */
+}
+
+#detail_card {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 400px;
+    height: 122px;
+    background-color: #3273F6;
+    z-index: 100;
+}
+
+#detail_back_btn {
+    position: absolute;
+    left: 16px;
+    top: 17px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: transparent;
+}
+
+#detail_title {
+    position: absolute;
+    left: 83px;
+    top:16px;
+    color: #FFF;
+    text-align: center;
+    font-family: Arial;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#detail_close_btn {
+    position: absolute;
+    left: 360px;
+    top: 17px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: transparent;
+}
+
+#address {
+    position: absolute;
+    left:116px;
+    top: 48px;
+    font-size: 15px;
+    color: white;
+    color: #FFF;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#detail-info {
+    position: absolute;
+    top: 74px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 0.5px solid  #6896FC;
+}
+#detail-info div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 0.5px solid  #6896FC;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: Arial;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    height: 100%;
+}
+.text_info {
+    padding-left: 16px;
+    padding-right: 11px;
+}
+#jeonse-text {
+    width: 120px; 
+}
+#jeonse-text img {
+    width: 18px;
+    height: 18px;
+}
+#pyeong-text {
+    width: 132.5px; 
+}
+#pyeong-text img {
+    width: 18px;
+    height: 18px;
+}
+#review_text {
+    width: 105.5px;
+    padding-left: 17px;
+    padding-right: 18px;
+}
+#review_text img {
+    width: 25px;
+    height: 25px;
+}
+#message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 41px;
+    padding-left: 8px;
+    border-right: none;
+}
+
+#home_picture {
+    position: absolute;
+    top: 64px;
+    width: 400px;
+    height: 120px;
+}
+
+#basics_panel {
+    position: absolute;
+    top: 184px;
+    width: 400px;
+    height: 196px;
+    border-top: 5px solid #f3f3f3;
+}
+#basics_panel_header {
+    position: absolute;
+    top: 21px;
+    left: 32px;
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+#basics_panel img {
+    position: absolute;
+    top: 29px;
+    left: 268px;
+    width: 108px;
+    height: 143px;
+}
+#basic-info-box {
+    position: absolute;
+    top: 56px;
+    left: 32px;
+    width: 213px;
+    height: 120px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 줄 간격 균등 분배*/
+}
+#basic-info-box p {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+.label {
+    color: #B1B1B1;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-right: 16px;
+}
+.color_blue_text {
+    color: #3273F6;
+}
+
+#graph-panel {
+    position: absolute;
+    top: 385px;
+    height: 349px;
+    width: 400px;
+    border-top: #f3f3f3 solid 5px;
+}
+
+#six-gawal {
+    position: absolute;
+    left: 32px;
+    top: 16px;
+    color: #000;
+    font-family: arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+#info_svg {
+    position: absolute;
+    left: 224px;
+    top: 20px;
+    width: 18px;
+    height: 18px;
+}
+.overlay {
+    position: absolute;
+    top: 43px;
+    left: 34px;
+    width: 320px;
+    height: 73px;
+    background: rgba(46, 46, 48, 0.95);    
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 10000;
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-family: Arial;
+}
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#bozeungwalse {
+    position: absolute;
+    left: 32px;
+    top: 43px;
+    color: #344BFD;
+    text-align: center;
+    font-family: arial;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+canvas {
+    position: absolute;
+    top: 103px;
+    width: 400px;
+    height: 220px;
+}
+
+#deunggi-panel {
+    position: absolute;
+    top: 739px;
+    width: 400px;
+    height: 333px;
+    border-top: solid 5px #f3f3f3;
+}
+
+#deunggi-text {
+    position: absolute;
+    left: 32px;
+    top: 24px;
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#deunggi-sky {
+    position: absolute;
+    left: 50px;
+    top: 72px;
+    width: 300px;
+    height: 43px;
+    border-radius: 5px;
+    background: rgba(213, 229, 255, 0.70);
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+#deunggi-sky img {
+    margin-left: 27px;
+}
+#deunggi-sky-text {
+    color: #125FF9;
+    font-family: arial;
+    font-size: 12.5px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#deunggi-hide {
+    position: absolute;
+    left: 40px;
+    top: 136px;
+    width: 307.765px;
+    height: 96px;
+}
+
+#deunggi-button {
+    position: absolute;
+    left: 40px;
+    top: 256px;
+    width: 308px;
+    height: 53px;
+    border-radius: 10px;
+    background: #344BFD;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#checklist_panel {
+    position: absolute;
+    top: 1091px;
+    width: 400px;
+    height: 313px;
+    border-top: solid 5px #f3f3f3;
+}
+#checklist_text {
+    position: absolute;
+    left: 32px;
+    top: 24px;
+    color: #000;
+    text-align: center;
+    font-family: Arial;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+#checklist {
+    position: absolute;
+    left: 24px;
+    top: 68px;
+    width: 352px;
+    height: 101px;
+    border-radius: 10px;
+    background: #F8F8F8;
+}
+#hangmok {
+    position: absolute;
+    left: 32px;
+    top: 26px;
+    color: #3E3E3E;
+    font-family: Arial;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+#chonggaji {
+    position: absolute;
+    top: 24px;
+    left: 241px;
+    color: #344BFD;
+    font-family: Arial;
+    font-size: 21px;    
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+#checklist_list {
+    position: absolute;
+    top: 57px;
+    width: 352px;
+    height: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7.5px;
+}
+#checklist_list div {
+    height: 100%;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+#villa {
+    width: 31.5px;
+    background: #B1B1B1;
+}
+#gocheung {
+    width: 31.5px;
+    background: #B1B1B1;
+}
+#goochug {
+    width: 31.5px;
+    background: #B1B1B1;
+}
+#apt {
+    width: 40px;
+    background: #B1B1B1;
+}
+#shinchug {
+    width: 31.5px;
+    background: #92B3FB;
+}
+#jucheung {
+    width: 31.5px;
+    background: #92B3FB;
+}
+#offitel {
+    width: 49px;
+    background: #92B3FB;
+}
+
+#checklist_button {
+    position: absolute;
+    left: 24px;
+    top: 193px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 0.5px solid #B1B1B1;
+    display: flex;
+    width: 352px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    color: #3E3E3E;
+    font-family: Arial;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+}
+
+
+
+.locationButton {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 222px;
+    left: 1840px;
+    border-radius: 10px;
+    z-index: 100;
+    background-color: #ffffff;
+    border: 1px solid #ffffff; 
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+    background: url('./gps(off).svg') no-repeat center center; /* 기본 이미지 */
+    background-size: contain;
+    cursor: pointer;
+}
+
+/*컬러 설명 창 영역 및 위치 설정*/
+.colors {
+    position: absolute;
+    width: 100px;
+    height: 200px;
+    top: 867px;
+    left: 1794px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    z-index: 100;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.color {
+    width: 27px;
+    height: 27px;
+    flex-shrink: 0;
+    border-radius: 100px;
+}
+#lowest {
+    background-color: #3273F6;
+    position: absolute;
+    left: 16px;
+    top: 13px;
+}
+#low {
+    background-color: #92B3FB;
+    position: absolute;
+    left: 16px;
+    top: 48px;
+}
+#average {
+    background-color: #CCC;
+    position: absolute;
+    left: 16px;
+    top: 83px;
+}
+#high {
+    background-color: #F892B6;
+    position: absolute;
+    left: 16px;
+    top: 118px;
+}
+#highest {
+    background-color: #EA5178;
+    position: absolute;
+    left: 16px;
+    top: 153px;
+}
+.color_text {
+    color: #2E2E30;
+    font-family: Arial;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+#lowest_text {
+    position: absolute;
+    left: 54px;
+    top: 20px;
+}
+#low_text {
+    position: absolute;
+    left: 54px;
+    top: 55px;
+}
+#average_text {
+    position: absolute;
+    left: 54px;
+    top: 90px;
+}
+#high_text {
+    position: absolute;
+    left: 54px;
+    top: 125px;
+}
+#highest_text {
+    position: absolute;
+    left: 54px;
+    top:160px;
+}
