@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>집 정보 가져오기</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #house-info { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+
+  <h1>🏠 집 정보 가져오기</h1>
+  <button id="load-btn">집 정보 불러오기</button>
+
+  <div id="house-info">여기에 집 정보가 표시됩니다.</div>
+
+  <script>
+    document.getElementById("load-btn").addEventListener("click", () => {
+    const houseId = 1; // 가져올 집의 ID
+    const url = `https://horribly-harmless-quetzal.ngrok-free.app/v1/houses/${houseId}`; // ⚠️ 서버 주소를 바꿔주세요!
+
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning': '69420', // 여기에 헤더를 추가합니다.
+        },
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("서버 응답 오류!");
+        }
+        return response.json();
+    })
+    .then(data => {
+        document.getElementById("house-info").innerHTML = `
+            <strong>주소:</strong> ${data.juso}<br>
+            <strong>보증금:</strong> ${data.deposit}만원<br>
+            <strong>월세:</strong> ${data.monthly_rent}만원<br>
+            <strong>건축년도:</strong> ${data.build_year}년<br>
+            <strong>층수:</strong> ${data.floor}층<br>
+            <strong>중개사 연락처:</strong> ${data.broker_phone}
+        `;
+    })
+    .catch(error => {
+        document.getElementById("house-info").innerText = `❌ 에러 발생: ${error.message}`;
+    });
+});
+
+  </script>
+
+</body>
+</html>
